@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-11-15T02:04:28.442960",
+  "timestamp": "2025-11-15T18:46:53.084802",
   "version": "1.0",
   "benchmarks": {
     "compression_ratio": {
       "status": "PASS",
-      "duration": 0.0013039112091064453,
+      "duration": 0.04442000389099121,
       "results": {
         "simple_script": {
           "original_bytes": 24,
@@ -19,33 +19,40 @@
           "ratio": 88.92307692307692,
           "expected_ratio": 500,
           "passes": false
+        },
+        "django_orm": {
+          "original_bytes": 111746,
+          "compressed_bytes": 13,
+          "ratio": 8595.846153846154,
+          "expected_ratio": 50000,
+          "passes": false
         }
       }
     },
     "performance": {
       "status": "PASS",
-      "duration": 0.006325721740722656,
+      "duration": 0.06415891647338867,
       "results": {
         "small": {
-          "avg_time_ms": 0.024823299997933645,
-          "iterations": 10,
-          "throughput": 40284.73249258731
+          "avg_time_ms": 0.014190780000831182,
+          "iterations": 100,
+          "throughput": 70468.28997006705
         },
         "medium": {
-          "avg_time_ms": 0.4195522000031815,
-          "iterations": 5,
-          "throughput": 2383.4936391524507
+          "avg_time_ms": 0.4236111799991704,
+          "iterations": 50,
+          "throughput": 2360.6553538128014
         },
         "large": {
-          "avg_time_ms": 3.960005999999794,
-          "iterations": 1,
-          "throughput": 252.5248699118264
+          "avg_time_ms": 4.150386099999537,
+          "iterations": 10,
+          "throughput": 240.9414391591451
         }
       }
     },
     "accuracy": {
       "status": "PASS",
-      "duration": 4.887580871582031e-05,
+      "duration": 7.033348083496094e-05,
       "results": {
         "round_trip_tests": 3,
         "avg_reconstruction_error": 0.24146628760559694,
@@ -55,7 +62,7 @@
     },
     "edge_cases": {
       "status": "PASS",
-      "duration": 0.0003757476806640625,
+      "duration": 0.0003802776336669922,
       "results": {
         "empty": {
           "status": "handled",
@@ -86,7 +93,7 @@
     },
     "multi_language": {
       "status": "PASS",
-      "duration": 9.822845458984375e-05,
+      "duration": 0.00010085105895996094,
       "results": {
         "python": {
           "ljpw": {
