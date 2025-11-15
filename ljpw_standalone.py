@@ -479,7 +479,7 @@ About:
     command = sys.argv[1]
 
     if command == 'help':
-        main()
+        # Show help text (already printed above)
         return
 
     if command == 'analyze':
