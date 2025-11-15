@@ -55,9 +55,91 @@ class SimpleCodeAnalyzer:
         }
 
     def analyze(self, code: str, filename: str = 'code') -> Dict[str, Any]:
-        """Analyze code and return LJPW scores"""
-        lines = code.split('\n')
-        code_lines = len([l for l in lines if l.strip() and not l.strip().startswith('#')])
+        """
+        Analyze code and return LJPW scores with comprehensive edge case handling.
+
+        Args:
+            code: Source code string to analyze
+            filename: Name for display purposes
+
+        Returns:
+            Dictionary with LJPW analysis results
+
+        Handles:
+            - None/empty input
+            - Binary data
+            - Unicode/encoding issues
+            - Extremely large files
+            - Invalid types
+        """
+        # Edge case: None input
+        if code is None:
+            return {
+                'filename': filename,
+                'lines': 0,
+                'ljpw': {'L': 0.0, 'J': 0.0, 'P': 0.0, 'W': 0.0},
+                'health': 0.0,
+                'insights': ['ERROR: None input provided'],
+                'distance_from_ne': self._distance_from_ne(0, 0, 0, 0),
+                'error': 'None input'
+            }
+
+        # Edge case: Invalid type
+        if not isinstance(code, str):
+            return {
+                'filename': filename,
+                'lines': 0,
+                'ljpw': {'L': 0.0, 'J': 0.0, 'P': 0.0, 'W': 0.0},
+                'health': 0.0,
+                'insights': [f'ERROR: Expected str, got {type(code).__name__}'],
+                'distance_from_ne': self._distance_from_ne(0, 0, 0, 0),
+                'error': f'Invalid type: {type(code).__name__}'
+            }
+
+        # Edge case: Extremely large file (>10MB)
+        MAX_SIZE = 10 * 1024 * 1024  # 10MB
+        if len(code) > MAX_SIZE:
+            return {
+                'filename': filename,
+                'lines': 0,
+                'ljpw': {'L': 0.0, 'J': 0.0, 'P': 0.0, 'W': 0.0},
+                'health': 0.0,
+                'insights': [f'ERROR: File too large ({len(code)} bytes > {MAX_SIZE} bytes)'],
+                'distance_from_ne': self._distance_from_ne(0, 0, 0, 0),
+                'error': 'File too large'
+            }
+
+        # Edge case: Binary data detection (lots of null bytes or non-printable chars)
+        try:
+            # Check for excessive null bytes or control characters
+            null_count = code.count('\x00')
+            if null_count > len(code) * 0.1:  # More than 10% null bytes
+                return {
+                    'filename': filename,
+                    'lines': 0,
+                    'ljpw': {'L': 0.0, 'J': 0.0, 'P': 0.0, 'W': 0.0},
+                    'health': 0.0,
+                    'insights': ['ERROR: Binary data detected (too many null bytes)'],
+                    'distance_from_ne': self._distance_from_ne(0, 0, 0, 0),
+                    'error': 'Binary data'
+                }
+        except Exception:
+            pass  # Continue if check fails
+
+        # Process code normally
+        try:
+            lines = code.split('\n')
+            code_lines = len([l for l in lines if l.strip() and not l.strip().startswith('#')])
+        except Exception as e:
+            return {
+                'filename': filename,
+                'lines': 0,
+                'ljpw': {'L': 0.0, 'J': 0.0, 'P': 0.0, 'W': 0.0},
+                'health': 0.0,
+                'insights': [f'ERROR: Failed to parse code: {str(e)}'],
+                'distance_from_ne': self._distance_from_ne(0, 0, 0, 0),
+                'error': f'Parse error: {str(e)}'
+            }
 
         if code_lines == 0:
             return {
@@ -65,7 +147,8 @@ class SimpleCodeAnalyzer:
                 'lines': 0,
                 'ljpw': {'L': 0.0, 'J': 0.0, 'P': 0.0, 'W': 0.0},
                 'health': 0.0,
-                'insights': ['Empty file - no code to analyze']
+                'insights': ['Empty file - no code to analyze'],
+                'distance_from_ne': self._distance_from_ne(0, 0, 0, 0)
             }
 
         # Score each dimension
@@ -201,22 +284,104 @@ def format_result(result: Dict) -> str:
     return '\n'.join(output)
 
 def analyze_file(filepath: str) -> Dict:
-    """Analyze a single file"""
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            code = f.read()
+    """
+    Analyze a single file with comprehensive error handling.
 
-        analyzer = SimpleCodeAnalyzer()
-        return analyzer.analyze(code, filepath)
-    except Exception as e:
+    Args:
+        filepath: Path to file to analyze
+
+    Returns:
+        Analysis results dictionary
+
+    Handles:
+        - File not found
+        - Permission errors
+        - Encoding issues
+        - Binary files
+        - Corrupted files
+    """
+    # Check file exists
+    from pathlib import Path
+    path = Path(filepath)
+
+    if not path.exists():
         return {
             'filename': filepath,
-            'error': str(e),
+            'error': 'File not found',
             'lines': 0,
             'ljpw': {'L': 0, 'J': 0, 'P': 0, 'W': 0},
             'health': 0,
-            'insights': [f'Error reading file: {e}']
+            'insights': [f'ERROR: File not found: {filepath}'],
+            'distance_from_ne': 0
         }
+
+    if not path.is_file():
+        return {
+            'filename': filepath,
+            'error': 'Not a file',
+            'lines': 0,
+            'ljpw': {'L': 0, 'J': 0, 'P': 0, 'W': 0},
+            'health': 0,
+            'insights': [f'ERROR: Not a file: {filepath}'],
+            'distance_from_ne': 0
+        }
+
+    # Try reading with UTF-8, fall back to other encodings
+    encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+    code = None
+    used_encoding = None
+
+    for encoding in encodings:
+        try:
+            with open(filepath, 'r', encoding=encoding) as f:
+                code = f.read()
+            used_encoding = encoding
+            break
+        except UnicodeDecodeError:
+            continue
+        except PermissionError:
+            return {
+                'filename': filepath,
+                'error': 'Permission denied',
+                'lines': 0,
+                'ljpw': {'L': 0, 'J': 0, 'P': 0, 'W': 0},
+                'health': 0,
+                'insights': [f'ERROR: Permission denied: {filepath}'],
+                'distance_from_ne': 0
+            }
+        except Exception as e:
+            return {
+                'filename': filepath,
+                'error': str(e),
+                'lines': 0,
+                'ljpw': {'L': 0, 'J': 0, 'P': 0, 'W': 0},
+                'health': 0,
+                'insights': [f'ERROR: {str(e)}'],
+                'distance_from_ne': 0
+            }
+
+    if code is None:
+        return {
+            'filename': filepath,
+            'error': 'Encoding error',
+            'lines': 0,
+            'ljpw': {'L': 0, 'J': 0, 'P': 0, 'W': 0},
+            'health': 0,
+            'insights': [f'ERROR: Could not decode file with any known encoding'],
+            'distance_from_ne': 0
+        }
+
+    analyzer = SimpleCodeAnalyzer()
+    result = analyzer.analyze(code, filepath)
+
+    # Add encoding info if not UTF-8
+    if used_encoding != 'utf-8':
+        result['encoding'] = used_encoding
+        if 'insights' not in result:
+            result['insights'] = []
+        result['insights'].append(f'NOTE: File encoded as {used_encoding}, not UTF-8')
+
+    return result
 
 def analyze_directory(dirpath: str) -> List[Dict]:
     """Analyze all code files in directory"""

@@ -1,0 +1,11 @@
+timestamp,benchmark,metric,value
+2025-11-15T02:04:28.442960,compression_ratio,status,PASS
+2025-11-15T02:04:28.442960,compression_ratio,duration,0.0013039112091064453
+2025-11-15T02:04:28.442960,performance,status,PASS
+2025-11-15T02:04:28.442960,performance,duration,0.006325721740722656
+2025-11-15T02:04:28.442960,accuracy,status,PASS
+2025-11-15T02:04:28.442960,accuracy,duration,4.887580871582031e-05
+2025-11-15T02:04:28.442960,edge_cases,status,PASS
+2025-11-15T02:04:28.442960,edge_cases,duration,0.0003757476806640625
+2025-11-15T02:04:28.442960,multi_language,status,PASS
+2025-11-15T02:04:28.442960,multi_language,duration,9.822845458984375e-05
