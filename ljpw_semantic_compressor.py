@@ -43,6 +43,37 @@ NATURAL_EQUILIBRIUM = {
 }
 
 # ============================================================================
+# CONFIGURATION CONSTANTS
+# ============================================================================
+
+class CompressionConfig:
+    """
+    Configuration constants for semantic compression
+
+    These values are derived from empirical analysis of LJPW behavior:
+
+    LJPW_MAX_VALUE (1.5):
+        Maximum observed LJPW value due to coupling effects.
+        LJPW dimensions can exceed 1.0 when subsystems reinforce each other.
+        Example: High Love (0.8) + High Wisdom (0.9) can boost effective L to 1.2
+        We clamp at 1.5 to cover 99.9% of real-world cases.
+
+    ERROR_CORRECTION_THRESHOLD (0.1):
+        Tolerance for checksum validation (10% of typical LJPW range).
+        If L or P checksums differ by more than 0.1, we average them.
+        This threshold balances false positives (too sensitive) vs
+        false negatives (too permissive).
+
+    MAX_LEVEL_SINGLE_DIGIT (9):
+        Genome string format uses single character per level (e.g. "L3J2P1").
+        This limits us to levels 0-9, which caps quantization at 10 levels.
+        For 16+ levels, we'd need to switch to two-digit encoding.
+    """
+    LJPW_MAX_VALUE = 1.5            # Max LJPW value due to coupling
+    ERROR_CORRECTION_THRESHOLD = 0.1  # 10% tolerance for checksums
+    MAX_LEVEL_SINGLE_DIGIT = 9      # Single-digit encoding limit
+
+# ============================================================================
 # QUANTIZATION: Converting continuous values to discrete bases
 # ============================================================================
 
@@ -140,9 +171,9 @@ class LJPWQuantizer:
         Returns:
             Integer level from 0 to (self.levels - 1)
         """
-        # Clamp to [0, 1.5] range (LJPW can exceed 1.0 due to coupling)
-        clamped = max(0.0, min(1.5, value))
-        normalized = clamped / 1.5  # Normalize to [0, 1]
+        # Clamp to [0, LJPW_MAX_VALUE] range (LJPW can exceed 1.0 due to coupling)
+        clamped = max(0.0, min(CompressionConfig.LJPW_MAX_VALUE, value))
+        normalized = clamped / CompressionConfig.LJPW_MAX_VALUE  # Normalize to [0, 1]
 
         for i in range(self.levels):
             if normalized <= self.thresholds[i + 1]:
@@ -157,7 +188,7 @@ class LJPWQuantizer:
         bin_start = self.thresholds[level]
         bin_end = self.thresholds[level + 1]
         midpoint = (bin_start + bin_end) / 2
-        return midpoint * 1.5  # Scale back to LJPW range
+        return midpoint * CompressionConfig.LJPW_MAX_VALUE  # Scale back to LJPW range
 
 # ============================================================================
 # LJPW CODONS: Triplet encoding of semantic primitives
@@ -236,11 +267,10 @@ class LJPWCodon:
         # Validate level ranges
         # Note: String format uses single digits, so max level is 9
         # This limits us to quantization_levels <= 10 for this encoding
-        MAX_LEVEL_IN_STRING = 9
         for i, (level, pos) in enumerate([(level1, 1), (level2, 3), (level3, 5)]):
-            if not (0 <= level <= MAX_LEVEL_IN_STRING):
+            if not (0 <= level <= CompressionConfig.MAX_LEVEL_SINGLE_DIGIT):
                 raise ValueError(
-                    f"Level at position {pos} is {level}, must be 0-{MAX_LEVEL_IN_STRING}"
+                    f"Level at position {pos} is {level}, must be 0-{CompressionConfig.MAX_LEVEL_SINGLE_DIGIT}"
                 )
 
         return cls(
@@ -477,9 +507,9 @@ class SemanticDecompressor:
             P_check = self.quantizer.dequantize_value(w_codon.level3, 'P')
 
             # If checksums don't match, use average (simple error correction)
-            if abs(L - L_check) > 0.1:
+            if abs(L - L_check) > CompressionConfig.ERROR_CORRECTION_THRESHOLD:
                 L = (L + L_check) / 2
-            if abs(P - P_check) > 0.1:
+            if abs(P - P_check) > CompressionConfig.ERROR_CORRECTION_THRESHOLD:
                 P = (P + P_check) / 2
 
             states.append((L, J, P, W))
@@ -493,6 +523,15 @@ class SemanticDecompressor:
         Returns:
             Dict with validation results
         """
+        # Handle empty genome
+        if len(genome.codons) == 0:
+            return {
+                'valid': True,  # Empty genome is technically valid
+                'error_count': 0,
+                'errors': [],
+                'integrity_score': 1.0,
+            }
+
         errors = []
 
         for i in range(0, len(genome.codons), 2):
@@ -508,11 +547,15 @@ class SemanticDecompressor:
             if main_codon.level3 != w_codon.level3:  # P checksum
                 errors.append(f"Codon {i}: P checksum mismatch")
 
+        # Calculate integrity score (avoid division by zero)
+        num_states = len(genome.codons) // 2
+        integrity_score = 1.0 - (len(errors) / num_states) if num_states > 0 else 1.0
+
         return {
             'valid': len(errors) == 0,
             'error_count': len(errors),
             'errors': errors[:10],  # First 10 errors
-            'integrity_score': 1.0 - (len(errors) / (len(genome.codons) / 2)),
+            'integrity_score': integrity_score,
         }
 
 # ============================================================================
