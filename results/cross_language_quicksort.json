@@ -1,0 +1,89 @@
+{
+  "implementations": {
+    "python": {
+      "L": 0.4,
+      "J": 0.35000000000000003,
+      "P": 0.7,
+      "W": 0.7600000000000001,
+      "language": "python",
+      "file_path": "/home/user/Semantic-Compressor/examples/cross_language/quicksort/quicksort.py",
+      "distance_from_anchor": 0.9644169222903546,
+      "distance_from_ne": 0.23755630911428138,
+      "divine_perfection": 51.779153885482266,
+      "physical_optimization": 88.12218454428593,
+      "health_score": 69.9506692148841,
+      "metadata": {
+        "lines": 93,
+        "functions": 3,
+        "classes": 0,
+        "error_handling": 0,
+        "complexity": 0
+      }
+    },
+    "javascript": {
+      "L": 0.4,
+      "J": 0.47000000000000003,
+      "P": 0.8,
+      "W": 0.9,
+      "language": "javascript",
+      "file_path": "/home/user/Semantic-Compressor/examples/cross_language/quicksort/quicksort.js",
+      "distance_from_anchor": 0.8312039460926542,
+      "distance_from_ne": 0.31659595701777377,
+      "divine_perfection": 58.439802695367284,
+      "physical_optimization": 84.1702021491113,
+      "health_score": 71.3050024222393,
+      "metadata": {
+        "lines": 100,
+        "functions": 7,
+        "classes": 0,
+        "error_handling": 0
+      }
+    },
+    "go": {
+      "L": 0.4,
+      "J": 0.44999999999999996,
+      "P": 0.58,
+      "W": 1.0,
+      "language": "go",
+      "file_path": "/home/user/Semantic-Compressor/examples/cross_language/quicksort/quicksort.go",
+      "distance_from_anchor": 0.9159148432032315,
+      "distance_from_ne": 0.4026325868580436,
+      "divine_perfection": 54.20425783983842,
+      "physical_optimization": 79.86837065709781,
+      "health_score": 67.03631424846812,
+      "metadata": {
+        "lines": 99,
+        "functions": 5,
+        "structs": 0,
+        "error_handling": 0
+      }
+    }
+  },
+  "pairwise_distances": {
+    "python_vs_javascript": 0.2097617696340303,
+    "python_vs_go": 0.28635642126552696,
+    "javascript_vs_go": 0.2424871130596429
+  },
+  "statistics": {
+    "mean": {
+      "L": 0.4000000000000001,
+      "J": 0.42333333333333334,
+      "P": 0.6933333333333334,
+      "W": 0.8866666666666667
+    },
+    "variance": {
+      "L": 3.0814879110195774e-33,
+      "J": 0.002755555555555554,
+      "P": 0.008088888888888895,
+      "W": 0.009688888888888879
+    },
+    "std_dev": {
+      "L": 5.551115123125783e-17,
+      "J": 0.05249338582674539,
+      "P": 0.08993825042154698,
+      "W": 0.09843215373488928
+    },
+    "cross_language_variance": 0.005133333333333332
+  },
+  "cross_language_invariance_score": 0.9948666666666667
+}
