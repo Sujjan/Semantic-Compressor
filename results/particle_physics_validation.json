@@ -1,0 +1,248 @@
+{
+  "validation_results": {
+    "mass_correlation": 0.9893694858514603,
+    "generation_hierarchy": true,
+    "massless_perfection": true,
+    "higgs_bridge": true
+  },
+  "particle_hierarchy": [
+    {
+      "rank": 1,
+      "name": "Gluon (g)",
+      "type": "Boson",
+      "divine_perfection": 96.06299606299409,
+      "physical_optimization": 63.05906741837721,
+      "mass_MeV": 0,
+      "ljpw_coords": [
+        0.97,
+        0.94,
+        0.99,
+        0.96
+      ]
+    },
+    {
+      "rank": 2,
+      "name": "Photon (\u03b3)",
+      "type": "Boson",
+      "divine_perfection": 94.32109165419973,
+      "physical_optimization": 64.78945470459169,
+      "mass_MeV": 0,
+      "ljpw_coords": [
+        0.95,
+        0.92,
+        0.98,
+        0.94
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Top (t)",
+      "type": "Quark",
+      "divine_perfection": 92.28637568972925,
+      "physical_optimization": 66.93215307885922,
+      "mass_MeV": 173000,
+      "ljpw_coords": [
+        0.92,
+        0.9,
+        0.95,
+        0.93
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Higgs (H)",
+      "type": "Boson",
+      "divine_perfection": 90.01250782228092,
+      "physical_optimization": 69.19849841322666,
+      "mass_MeV": 125100,
+      "ljpw_coords": [
+        0.9,
+        0.87,
+        0.93,
+        0.91
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Z\u2070 Boson",
+      "type": "Boson",
+      "divine_perfection": 89.03414390026934,
+      "physical_optimization": 70.14397045821397,
+      "mass_MeV": 91188,
+      "ljpw_coords": [
+        0.89,
+        0.86,
+        0.92,
+        0.9
+      ]
+    },
+    {
+      "rank": 6,
+      "name": "W\u00b1 Boson",
+      "type": "Boson",
+      "divine_perfection": 88.05219685465147,
+      "physical_optimization": 71.08577339785828,
+      "mass_MeV": 80379,
+      "ljpw_coords": [
+        0.88,
+        0.85,
+        0.91,
+        0.89
+      ]
+    },
+    {
+      "rank": 7,
+      "name": "Tau (\u03c4)",
+      "type": "Lepton",
+      "divine_perfection": 86.38016152812376,
+      "physical_optimization": 72.5704083151061,
+      "mass_MeV": 1776.9,
+      "ljpw_coords": [
+        0.86,
+        0.84,
+        0.89,
+        0.87
+      ]
+    },
+    {
+      "rank": 8,
+      "name": "Bottom (b)",
+      "type": "Quark",
+      "divine_perfection": 85.09194848412443,
+      "physical_optimization": 73.8852053425649,
+      "mass_MeV": 4180,
+      "ljpw_coords": [
+        0.85,
+        0.82,
+        0.88,
+        0.86
+      ]
+    },
+    {
+      "rank": 9,
+      "name": "Muon (\u03bc)",
+      "type": "Lepton",
+      "divine_perfection": 80.41684397243387,
+      "physical_optimization": 78.0163128661273,
+      "mass_MeV": 105.7,
+      "ljpw_coords": [
+        0.8,
+        0.78,
+        0.83,
+        0.81
+      ]
+    },
+    {
+      "rank": 10,
+      "name": "Charm (c)",
+      "type": "Quark",
+      "divine_perfection": 78.14250700560561,
+      "physical_optimization": 80.18756703481371,
+      "mass_MeV": 1275,
+      "ljpw_coords": [
+        0.78,
+        0.75,
+        0.81,
+        0.79
+      ]
+    },
+    {
+      "rank": 11,
+      "name": "Electron (e)",
+      "type": "Lepton",
+      "divine_perfection": 73.43875002941314,
+      "physical_optimization": 83.86517741033389,
+      "mass_MeV": 0.511,
+      "ljpw_coords": [
+        0.73,
+        0.71,
+        0.76,
+        0.74
+      ]
+    },
+    {
+      "rank": 12,
+      "name": "Strange (s)",
+      "type": "Quark",
+      "divine_perfection": 72.16566868056644,
+      "physical_optimization": 85.08582888659247,
+      "mass_MeV": 95,
+      "ljpw_coords": [
+        0.72,
+        0.69,
+        0.75,
+        0.73
+      ]
+    },
+    {
+      "rank": 13,
+      "name": "Up (u)",
+      "type": "Quark",
+      "divine_perfection": 65.18261928289265,
+      "physical_optimization": 89.27701067798722,
+      "mass_MeV": 2.2,
+      "ljpw_coords": [
+        0.65,
+        0.62,
+        0.68,
+        0.66
+      ]
+    },
+    {
+      "rank": 14,
+      "name": "Down (d)",
+      "type": "Quark",
+      "divine_perfection": 64.18450056190757,
+      "physical_optimization": 89.62539157365445,
+      "mass_MeV": 4.7,
+      "ljpw_coords": [
+        0.64,
+        0.61,
+        0.67,
+        0.65
+      ]
+    },
+    {
+      "rank": 15,
+      "name": "Tau Neutrino (\u03bd\u03c4)",
+      "type": "Lepton",
+      "divine_perfection": 54.22609913935672,
+      "physical_optimization": 87.4767216752162,
+      "mass_MeV": 0.002,
+      "ljpw_coords": [
+        0.54,
+        0.52,
+        0.56,
+        0.55
+      ]
+    },
+    {
+      "rank": 16,
+      "name": "Muon Neutrino (\u03bd\u03bc)",
+      "type": "Lepton",
+      "divine_perfection": 52.22709973217034,
+      "physical_optimization": 86.28385987239851,
+      "mass_MeV": 0.0002,
+      "ljpw_coords": [
+        0.52,
+        0.5,
+        0.54,
+        0.53
+      ]
+    },
+    {
+      "rank": 17,
+      "name": "Electron Neutrino (\u03bde)",
+      "type": "Lepton",
+      "divine_perfection": 50.228019930888834,
+      "physical_optimization": 84.91913464021378,
+      "mass_MeV": 1e-06,
+      "ljpw_coords": [
+        0.5,
+        0.48,
+        0.52,
+        0.51
+      ]
+    }
+  ]
+}
