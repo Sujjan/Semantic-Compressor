@@ -14,14 +14,16 @@
 | File | Purpose | Read Time |
 |------|---------|-----------|
 | `THEORY.md` | **Accessible bridge: math → practice** | 25 min |
-| `LJPW Mathematical Baselines Reference V3.md` | Complete mathematical specification | 45 min |
-| `Dynamic LJPW Model v3.0 - Specification...md` | Non-linear dynamics, Bayesian validation | 40 min |
+| `LJPW Mathematical Baselines Reference V4.md` | Complete mathematical specification (v4.0) | 45 min |
+| `Dynamic LJPW Model v4.0 - Specification...md` | Non-linear dynamics, Bayesian validation | 40 min |
+| `LJPW Mathematical Baselines Reference V3.md` | Previous version (deprecated) | - |
 
 **Key insights:**
 - LJPW dimensions based on fundamental constants: φ⁻¹, √2-1, e-2, ln(2)
-- v3.0 model uses non-linear ODEs with saturation and threshold effects
-- Empirically validated via Bayesian MCMC (49% error reduction)
+- **v4.0 model** uses non-linear ODEs with saturation and threshold effects
+- Empirically validated via Bayesian MCMC (50% error reduction vs v2.0)
 - RK4 numerical integration for physics-grade accuracy
+- Python implementation: `src/ljpw/ljpw_baselines_v4.py`
 
 ### Level 0: Entry Points
 **Start here if you're new**
@@ -45,6 +47,7 @@
 
 | File | Purpose | Language | Lines |
 |------|---------|----------|-------|
+| `ljpw_baselines_v4.py` | ⭐ Mathematical baselines v4.0 | Python | ~750 |
 | `ljpw_standalone.py` | Main analysis tool | Python | 359 |
 | `ljpw_pipeline.py` | Full pipeline | Python | ~800 |
 | `ljpw_semantic_compressor.py` | Compression engine | Python | ~600 |
@@ -66,20 +69,22 @@
 
 ## 📖 Reading Paths
 
-### Path 0: "I want the mathematical foundations" ⭐ NEW
+### Path 0: "I want the mathematical foundations" ⭐ UPDATED v4.0
 ```
 1. THEORY.md (25 min) - Accessible bridge document
 2. README.md - Mathematical Foundations section (10 min)
-3. Dynamic LJPW Model v3.0...md (40 min) - For deep dive
-4. LJPW Mathematical Baselines Reference V3.md (45 min) - Complete spec
+3. Dynamic LJPW Model v4.0...md (40 min) - For deep dive
+4. LJPW Mathematical Baselines Reference V4.md (45 min) - Complete spec
+5. Try: python3 src/ljpw/ljpw_baselines_v4.py - Interactive demo
 ```
 **Total: 2 hours (comprehensive understanding)**
 
 **Why this path:**
 - Understand φ, √2, e, ln(2) → LJPW mapping
-- See saturation & threshold effects
+- See saturation & threshold effects (NEW in v4.0)
 - Learn Bayesian calibration methodology
 - Grasp RK4 integration and why it matters
+- Work with production-ready Python implementation
 
 ### Path 1: "Show me proof it works"
 ```
