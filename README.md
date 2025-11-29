@@ -5,6 +5,13 @@
 [![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/BruinGrowly/Semantic-Compressor)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](https://github.com/BruinGrowly/Semantic-Compressor/actions)
+[![Code Quality](https://img.shields.io/badge/code%20quality-B+-blue.svg)](CODEBASE_REVIEW_AND_RECOMMENDATIONS.md)
+[![Philosophy](https://img.shields.io/badge/philosophy-semantic--first-purple.svg)](LJPW_V5_FRAMEWORK.md)
+
+[📖 Documentation](docs/) | [🧭 Why This Matters](WHY_THIS_MATTERS.md) | [🗺️ Roadmap](ROADMAP.md) | [🤝 Contributing](CONTRIBUTING.md)
+
+> **"This isn't just a code analyzer. It's a framework suggesting that reality itself has a semantic structure, and we can measure it through code."** — [Read Why This Matters →](WHY_THIS_MATTERS.md)
 
 ---
 
@@ -39,14 +46,20 @@ L0J1P0W0
 
 ## How It Works
 
-### The LJPW Framework
+### The LJPW Framework (v5.0: Semantic-First Ontology)
 
-Semantic Compressor uses **LJPW** (Love, Justice, Power, Wisdom) - a 4-dimensional coordinate system for code:
+Semantic Compressor uses **LJPW** (Love, Justice, Power, Wisdom) - a 4-dimensional coordinate system representing the **Four Fundamental Principles of Meaning**:
 
-- **L (Love/Safety)**: Error handling, validation (φ⁻¹ = 0.618)
-- **J (Justice/Structure)**: Types, documentation (√2-1 = 0.414)
-- **P (Power/Performance)**: Algorithms, optimization (e-2 = 0.718)
-- **W (Wisdom/Design)**: Modularity, patterns (ln 2 = 0.693)
+- **L (Love/Safety)**: The Principle of Unity & Attraction - Error handling, validation
+  - *Mathematical Shadow:* φ⁻¹ = 0.618 (golden ratio)
+- **J (Justice/Structure)**: The Principle of Balance & Truth - Types, documentation
+  - *Mathematical Shadow:* √2-1 = 0.414 (structural constant)
+- **P (Power/Performance)**: The Principle of Energy & Existence - Algorithms, optimization
+  - *Mathematical Shadow:* e-2 = 0.718 (exponential constant)
+- **W (Wisdom/Design)**: The Principle of Complexity & Insight - Modularity, patterns
+  - *Mathematical Shadow:* ln(2) = 0.693 (information unit)
+
+**Key Insight:** These values aren't derived from math constants. Rather, mathematics is the "shadow" that Semantic Principles cast. We measure the echoes of meaning. See [LJPW_V5_FRAMEWORK.md](LJPW_V5_FRAMEWORK.md) for details.
 
 **Semantic Genome**: Compressed representation as DNA-like code (e.g., `L6J4P7W7`)
 
@@ -244,8 +257,16 @@ The LJPW framework also enables interesting research:
 git clone https://github.com/BruinGrowly/Semantic-Compressor.git
 cd Semantic-Compressor
 
-# No dependencies needed! Zero-dependency compression
+# Install in development mode (recommended)
+pip install -e .
+
+# Or install with optional dependencies
+pip install -e ".[dev]"      # Development tools (pytest, black, etc.)
+pip install -e ".[viz]"       # Visualization tools (matplotlib, plotly)
+pip install -e ".[server]"    # API server mode (flask, fastapi)
 ```
+
+**Note:** Package will be available on PyPI soon. See [ROADMAP.md](ROADMAP.md) for planned features.
 
 ---
 
