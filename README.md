@@ -7,8 +7,11 @@
 [![Python](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/)
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](https://github.com/BruinGrowly/Semantic-Compressor/actions)
 [![Code Quality](https://img.shields.io/badge/code%20quality-B+-blue.svg)](CODEBASE_REVIEW_AND_RECOMMENDATIONS.md)
+[![Philosophy](https://img.shields.io/badge/philosophy-semantic--first-purple.svg)](LJPW_V5_FRAMEWORK.md)
 
-[📖 Documentation](docs/) | [🗺️ Roadmap](ROADMAP.md) | [🤝 Contributing](CONTRIBUTING.md) | [📊 Review](CODEBASE_REVIEW_AND_RECOMMENDATIONS.md)
+[📖 Documentation](docs/) | [🧭 Why This Matters](WHY_THIS_MATTERS.md) | [🗺️ Roadmap](ROADMAP.md) | [🤝 Contributing](CONTRIBUTING.md)
+
+> **"This isn't just a code analyzer. It's a framework suggesting that reality itself has a semantic structure, and we can measure it through code."** — [Read Why This Matters →](WHY_THIS_MATTERS.md)
 
 ---
 

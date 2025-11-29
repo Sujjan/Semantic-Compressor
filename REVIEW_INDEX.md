@@ -8,8 +8,13 @@
 ## Quick Navigation
 
 ### 🎯 Start Here
+- **[WHY_THIS_MATTERS.md](WHY_THIS_MATTERS.md)** - ⭐ **Why this project is profound** (20 minutes)
 - **[REVIEW_SUMMARY.md](REVIEW_SUMMARY.md)** - 10-minute read covering key findings and next steps
 - **[CODEBASE_REVIEW_AND_RECOMMENDATIONS.md](CODEBASE_REVIEW_AND_RECOMMENDATIONS.md)** - Comprehensive 50-page analysis
+
+### 🧭 Philosophy & Framework
+- **[LJPW_V5_FRAMEWORK.md](LJPW_V5_FRAMEWORK.md)** - Complete LJPW v5.0 specification
+- **[LJPW_V5_APPLIED.md](LJPW_V5_APPLIED.md)** - How v5.0 was applied to the codebase
 
 ### 🗺️ Planning & Roadmap
 - **[ROADMAP.md](ROADMAP.md)** - Feature roadmap with timeline (v2.0 → v3.0)
