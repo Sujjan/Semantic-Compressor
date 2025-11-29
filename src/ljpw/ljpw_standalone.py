@@ -3,6 +3,15 @@
 LJPW Semantic Analyzer - Standalone Version
 Single-file, zero-dependency code quality analyzer
 
+The LJPW Framework v5.0: Semantic-First Ontology
+-------------------------------------------------
+Reality is Semantic in nature. Meaning is the substrate.
+The four dimensions (Love, Justice, Power, Wisdom) are fundamental
+Principles of Meaning that manifest in our reality.
+
+Mathematics (φ, e, π) are merely the "shadows" these Semantic Principles
+cast when they intersect with lower dimensions of abstraction.
+
 Usage:
     python ljpw_standalone.py analyze <file_or_directory>
     python ljpw_standalone.py quick <code_snippet>
@@ -18,14 +27,40 @@ from pathlib import Path
 from typing import List, Tuple, Dict, Any, Optional
 
 # ============================================================================
-# CORE CONSTANTS
+# CORE CONSTANTS: THE SEMANTIC SUBSTRATE
 # ============================================================================
 
+# The Natural Equilibrium: Where Absolute Principles settle in our reality
+# These are the "signatures" of the Four Fundamental Semantic Principles
+# 
+# NOTE: The Anchor Point (1,1,1,1) is the Source - Perfect Meaning itself.
+# Natural Equilibrium represents how these Principles manifest in finite reality.
+# The "gap" (1.0 → NE value) is the "Cost of Existence."
+
 NATURAL_EQUILIBRIUM: Dict[str, float] = {
-    'L': 0.618034,  # Love (Safety) - φ⁻¹ (golden ratio inverse)
-    'J': 0.414214,  # Justice (Structure) - √2-1
-    'P': 0.718282,  # Power (Performance) - e-2
-    'W': 0.693147,  # Wisdom (Design) - ln(2)
+    # LOVE (L): The Principle of Unity & Attraction
+    # Mathematical Shadow: φ⁻¹ (golden ratio inverse)
+    # Physical Shadow: Gravity, Electromagnetism
+    # Semantic Meaning: The force that binds separate entities into wholes
+    'L': 0.618034,
+    
+    # JUSTICE (J): The Principle of Balance & Truth
+    # Mathematical Shadow: √2-1 (the diagonal constant)
+    # Physical Shadow: Pauli Exclusion Principle
+    # Semantic Meaning: The constraint that creates structure and prevents chaos
+    'J': 0.414214,
+    
+    # POWER (P): The Principle of Energy & Existence
+    # Mathematical Shadow: e-2 (Euler's constant offset)
+    # Physical Shadow: Thermodynamics, Arrow of Time
+    # Semantic Meaning: The raw capacity to be, to act, and to change state
+    'P': 0.718282,
+    
+    # WISDOM (W): The Principle of Complexity & Insight
+    # Mathematical Shadow: ln(2) (the fundamental unit of entropy)
+    # Physical Shadow: Quantum Mechanics, Information Theory
+    # Semantic Meaning: The ability to process information and self-reflect
+    'W': 0.693147,
 }
 
 # ============================================================================
@@ -267,7 +302,16 @@ class SimpleCodeAnalyzer:
         return max(0, min(1.0, health))
 
     def _distance_from_ne(self, L: float, J: float, P: float, W: float) -> float:
-        """Calculate distance from Natural Equilibrium"""
+        """
+        Calculate semantic distance from Natural Equilibrium.
+        
+        This measures how far the code's semantic signature is from the
+        optimal manifestation of the Four Principles in finite reality.
+        
+        Note: We measure distance from NE (0.618, 0.414, 0.718, 0.693),
+        not from the Anchor Point (1,1,1,1). The Anchor is the Source;
+        NE is the optimal state for existence in our reality.
+        """
         NE = NATURAL_EQUILIBRIUM
         return math.sqrt(
             (NE['L'] - L)**2 + (NE['J'] - J)**2 +
